@@ -2,10 +2,11 @@ import React from 'react'
 import FaqSection from './FaqSection'
 import { useRecoilValue } from 'recoil'
 import { userStatusAtom } from '../store/userStatusAtom'
+import { useNavigate } from 'react-router-dom'
 
 function HomeWithoutLogin() {
     const userStatus = useRecoilValue(userStatusAtom)
-    
+    const navigate = useNavigate();
   return (
     <div>
         <div className='bg-[#F8F8F8] flex px-6 md:px-24 py-10 flex-col md:flex-row'>
@@ -18,7 +19,7 @@ function HomeWithoutLogin() {
                         <span className='font-bold'>Smart Hostel Management</span> made simple. Seamlessly manage rooms, student data, fees, and complaints — all in one place. Empower wardens and students with a smooth, hassle-free experience.
                     </p>
                     {userStatus.islogin === false && 
-                        <button className='border-2 border-[#2489D3] text-lg sm:text-xl font-sans bg-[#2489D3] text-white rounded-[50px] px-8 py-3 sm:px-10 sm:py-4 cursor-pointer hover:bg-[#1d6ea9] hover:outline-[3px] w-full sm:w-80'>
+                        <button onClick={()=> navigate('/signup')} className='border-2 border-[#2489D3] text-lg sm:text-xl font-sans bg-[#2489D3] text-white rounded-[50px] px-8 py-3 sm:px-10 sm:py-4 cursor-pointer hover:bg-[#1d6ea9] hover:outline-[3px] w-full sm:w-80'>
                             Register Your Hostel
                         </button>
                     }

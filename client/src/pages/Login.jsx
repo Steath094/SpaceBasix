@@ -139,12 +139,12 @@ const Login = () => {
           <div className="mt-8 text-center">
             <p className="text-sm text-gray-500">
               Not an admin?{' '}
-              <a
-                href="/student-login"
+              <Link
+                to={'/student-login'}
                 className="inline-block text-[#2489D3] font-medium transition duration-200 hover:text-blue-800 hover:underline"
               >
                 Log in as a student
-              </a>
+              </Link>
             </p>
           </div>
         </div>

@@ -9,6 +9,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { refreshAtom } from '../store/student';
 import { backendUrl } from '../config';
+
 const StudentLogin = () => {
   const setRefresh = useSetRecoilState(refreshAtom);
   const regRef = useRef();
