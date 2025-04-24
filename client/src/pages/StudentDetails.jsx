@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValueLoadable } from 'recoil'; // if using recoil state management
-
+import { backendUrl } from '../config';
 const StudentDetails = () => {
   const { regNo } = useParams(); // Grabs the student ID from the URL
   const [student, setStudent] = useState(null);
@@ -11,7 +11,7 @@ const StudentDetails = () => {
     // Replace this with your actual fetching logic or API call
     const fetchStudentDetails = async () => {
       // Example: You might use Recoil or directly fetch data from an API
-      const response = await fetch(`http://localhost:8080/api/student/${regNo}`);
+      const response = await fetch(`${backendUrl}/api/student/${regNo}`);
       const data = await response.json();
       setStudent(data.data);
     };

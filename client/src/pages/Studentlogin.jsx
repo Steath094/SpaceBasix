@@ -8,7 +8,7 @@ import { profileAtom } from '../store/profileAtom';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { refreshAtom } from '../store/student';
-
+import { backendUrl } from '../config';
 const StudentLogin = () => {
   const setRefresh = useSetRecoilState(refreshAtom);
   const regRef = useRef();
@@ -49,7 +49,7 @@ const StudentLogin = () => {
 
     setLoading(true); // Set loading state to true during login
     try {
-      const res = await axios.post('http://localhost:8080/api/student/login', {
+      const res = await axios.post(`${backendUrl}/api/student/login`, {
         registrationNumber: regRef.current.value,
         password: passwordRef.current.value,
       });

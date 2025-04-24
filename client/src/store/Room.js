@@ -2,6 +2,7 @@ import axios from "axios";
 import { atom, atomFamily, selector } from "recoil";
 import { profileAtom } from "./profileAtom";
 import { refreshAtom } from "./student";
+import { backendUrl } from '../config';
 
 export const roomListAtom = atom({
     key:'roomListAtom',
@@ -14,7 +15,7 @@ export const roomListAtom = atom({
             if (!hostelId) return []; // Graceful fallback
   
               
-            const res = await axios.get(`http://localhost:8080/api/room/hostel/${hostelId}`)
+            const res = await axios.get(`${backendUrl}/api/room/hostel/${hostelId}`)
             console.log(res);
             
             return res.data.data || [];

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { backendUrl } from '../config';
 
 const RoomDetails = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const RoomDetails = () => {
   useEffect(() => {
     const fetchRoom = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/room/${id}`);
+        const response = await fetch(`${backendUrl}/api/room/${id}`);
         const data = await response.json();
         setRoom(data.data);
       } catch (error) {

@@ -5,6 +5,7 @@ import { useSetRecoilState } from "recoil";
 import { profileAtom } from "../store/profileAtom";
 import { userStatusAtom } from "../store/userStatusAtom";
 import { refreshAtom } from "../store/student";
+import { backendUrl } from '../config';
 
 const Signup = () => {
   const setRefresh = useSetRecoilState(refreshAtom
@@ -51,7 +52,7 @@ const Signup = () => {
 
     try {
       const { name, email, password, hostelName, institute } = formRef.current;
-      const response = await axios.post("http://localhost:8080/api/admin/register", {
+      const response = await axios.post(`${backendUrl}/api/admin/register`, {
         name,
         email,
         password,

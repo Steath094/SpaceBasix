@@ -3,7 +3,7 @@ import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 import axios from 'axios';
 import { profileAtom } from '../store/profileAtom';
 import { refreshAtom, studentListAtom } from '../store/student';
-
+import { backendUrl } from '../config';
 export default function AddRoom() {
   const setRefresh = useSetRecoilState(refreshAtom);
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function AddRoom() {
     };
 
     try {
-      const res = await axios.post('http://localhost:8080/api/room/add', payload);
+      const res = await axios.post(`${backendUrl}/api/room/add`, payload);
       setRefresh(prev => prev + 1);
       setSuccessInfo(res.data);
     } catch (err) {

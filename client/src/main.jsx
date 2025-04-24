@@ -125,7 +125,7 @@ const router = createBrowserRouter([
         {
             path: "student-dashboard",
             element: (
-                <StudentAuthLayout authentication={false}>
+                <StudentAuthLayout authentication={true}>
                     <StudentDashboard/>
                 </StudentAuthLayout>
             )

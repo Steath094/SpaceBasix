@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { backendUrl } from '../config';
 
 const ComplaintDetails = () => {
   const { id } = useParams(); // Grabs the complaint ID from the URL
@@ -10,7 +11,7 @@ const ComplaintDetails = () => {
     // Replace this with your actual fetching logic or API call
     const fetchComplaintDetails = async () => {
       // Example: You might use Recoil or directly fetch data from an API
-      const response = await fetch(`http://localhost:8080/api/complaints/${id}`);
+      const response = await fetch(`${backendUrl}/api/complaints/${id}`);
       const data = await response.json();
       console.log(response);
       

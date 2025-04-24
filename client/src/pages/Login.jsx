@@ -6,6 +6,7 @@ import { useSetRecoilState } from 'recoil';
 import { userStatusAtom } from '../store/userStatusAtom';
 import { profileAtom } from '../store/profileAtom';
 import { refreshAtom } from '../store/student';
+import { backendUrl } from '../config';
 
 const Login = () => {
   const setRefresh = useSetRecoilState(refreshAtom
@@ -45,7 +46,7 @@ const Login = () => {
     if (!validate()) return;
   
     try {
-      const res = await axios.post('http://localhost:8080/api/admin/login', {
+      const res = await axios.post(`${backendUrl}/api/admin/login`, {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       });

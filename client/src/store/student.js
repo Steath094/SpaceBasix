@@ -1,6 +1,8 @@
 import axios from "axios";
 import { atom, atomFamily, selector } from "recoil";
 import { profileAtom } from "./profileAtom";
+import { backendUrl } from '../config';
+
 export const refreshAtom = atom({
     key: 'refreshAtom',
     default: 0,
@@ -16,7 +18,7 @@ export const refreshAtom = atom({
   
         if (!hostelId) return []; // Graceful fallback
   
-        const res = await axios.get(`http://localhost:8080/api/student/hostel/${hostelId}`);
+        const res = await axios.get(`${backendUrl}/api/student/hostel/${hostelId}`);
         return res.data.data;
       }
     })

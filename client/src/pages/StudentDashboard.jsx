@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { profileAtom } from '../store/profileAtom';
+import { backendUrl } from '../config';
 
 export default function StudentDashboard() {
   const profile = useRecoilValue(profileAtom);
@@ -19,7 +20,7 @@ export default function StudentDashboard() {
   useEffect(() => {
     if (profile?.id) {
       setLoading(true);
-      axios.get(`http://localhost:8080/api/room/student/${profile.id}`)
+      axios.get(`${backendUrl}/api/room/student/${profile.id}`)
         .then(res => {
           setRoomInfo(res.data.data);
           setLoading(false);
@@ -41,7 +42,7 @@ export default function StudentDashboard() {
 
   const fetchComplaints = async () => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/complaints/student/${profile.registrationNumber}`);
+      const res = await axios.get(`${backendUrl}/api/complaints/student/${profile.registrationNumber}`);
       const data = res.data.data;
       setComplaints(Array.isArray(data) ? data : (data ? [data] : []));
     } catch (err) {
@@ -62,7 +63,7 @@ export default function StudentDashboard() {
     };
 
     try {
-      await axios.post('http://localhost:8080/api/complaints/add', payload);
+      await axios.post(`${backendUrl}/api/complaints/add`, payload);
       setForm({ message: '', status: 'PENDING' });
       fetchComplaints();
     } catch (err) {

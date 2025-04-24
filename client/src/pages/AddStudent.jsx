@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { FaUserGraduate } from 'react-icons/fa';
 import { profileAtom } from '../store/profileAtom';
 import { refreshAtom } from '../store/student';
+import { backendUrl } from '../config';
+
 export default function AddStudent() {
   const refresh = useSetRecoilState(refreshAtom);
   const hostelId = useRecoilValue(profileAtom)?.id;
@@ -40,7 +42,7 @@ export default function AddStudent() {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/student/register', {
+      const response = await fetch(`${backendUrl}/api/student/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
