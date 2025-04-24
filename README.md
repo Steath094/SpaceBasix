@@ -46,8 +46,8 @@ A full-stack Hostel Management System built with **Spring Boot**, **React**, and
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/hostel-management-backend.git
-   cd hostel-management-backend
+   git clone git@github.com:Steath094/SpaceBasix.git
+   cd hostelmanagement
    ```
 
 2. Open in your IDE (IntelliJ, VS Code)
@@ -70,7 +70,7 @@ Backend will be live at: `http://localhost:8080`
 
 1. Navigate to frontend folder:
    ```bash
-   cd hostel-management-frontend
+   cd client
    ```
 
 2. Install dependencies:
@@ -149,8 +149,7 @@ frontend/
 
 ## 👨‍💻 Author
 
-Built by [Your Name]  
-📧 [your.email@example.com]
+Built by ## Steath094  
 
 ---
 
