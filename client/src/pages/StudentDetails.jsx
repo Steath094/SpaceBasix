@@ -18,7 +18,6 @@ const StudentDetails = () => {
 
     fetchStudentDetails();
   }, [regNo]);
-console.log(student);
 
 if (!student) {
     return (

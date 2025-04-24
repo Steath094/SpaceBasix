@@ -39,7 +39,6 @@ const ComplaintsCard = () => {
   }
 
   const complaintList = complaintsLoadable.contents;
-  console.log(complaintList);
   
   const total = complaintList.length;
   const resolved = complaintList.filter(complaint => complaint.status === "RESOLVED").length;

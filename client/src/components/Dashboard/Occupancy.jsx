@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Cell } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { ExternalLink } from 'lucide-react';
 import { roomListAtom } from '../../store/Room';
 import { useRecoilValueLoadable } from 'recoil';
@@ -51,19 +51,19 @@ const OccupancyCard = () => {
   const percent = total > 0 ? Math.round((occupied / total) * 100) : 0;
 
   return (
-    <div className="bg-white text-black p-4 sm:p-6 rounded-2xl shadow-md w-full">
+    <div className="bg-white text-black p-4 sm:p-6 rounded-2xl shadow-md w-full max-w-md mx-auto">
       <div className="flex items-center gap-2 mb-4">
         <h2 className="text-lg sm:text-xl font-semibold">Occupancy</h2>
         <ExternalLink size={16} className="text-gray-500" />
       </div>
 
-      <div className="flex justify-center items-center relative w-full">
-        <div className="relative w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]">
-          <PieChart width={200} height={200}>
+      <div className="relative w-full aspect-square max-w-[250px] mx-auto flex items-center justify-center">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
             <Pie
               data={data}
-              innerRadius={70}
-              outerRadius={90}
+              innerRadius="70%"
+              outerRadius="90%"
               startAngle={180}
               endAngle={-180}
               paddingAngle={0}
@@ -74,9 +74,10 @@ const OccupancyCard = () => {
               ))}
             </Pie>
           </PieChart>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl sm:text-2xl font-bold text-black">
-            {percent}%
-          </div>
+        </ResponsiveContainer>
+
+        <div className="absolute text-xl sm:text-2xl font-bold text-black">
+          {percent}%
         </div>
       </div>
     </div>

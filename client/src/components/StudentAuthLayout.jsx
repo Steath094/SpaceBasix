@@ -9,7 +9,6 @@ function StudentAuthLayout({
     const navigate = useNavigate()
     const [loader,setLoader] = useState(true)
     const userStatus = useRecoilValue(userStatusAtom)
-    console.log(userStatus);
     const authStatus =userStatus.islogin && userStatus.role=="student";
     useEffect(()=>{
         if (authentication && authStatus !==authentication) {

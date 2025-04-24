@@ -13,7 +13,6 @@ const ComplaintDetails = () => {
       // Example: You might use Recoil or directly fetch data from an API
       const response = await fetch(`${backendUrl}/api/complaints/${id}`);
       const data = await response.json();
-      console.log(response);
       
       setComplaint(data);
     };

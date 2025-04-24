@@ -9,7 +9,6 @@ function AdminAuthLayout({
     const navigate = useNavigate()
     const [loader,setLoader] = useState(true)
     const userStatus = useRecoilValue(userStatusAtom)
-    console.log(userStatus.role);
     const authStatus = userStatus.islogin && userStatus.role==="admin";
     useEffect(()=>{
         if (authentication && authStatus !==authentication) {
