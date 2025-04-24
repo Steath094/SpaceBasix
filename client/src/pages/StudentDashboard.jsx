@@ -16,7 +16,6 @@ export default function StudentDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch room info and complaints
   useEffect(() => {
     if (profile?.id) {
       setLoading(true);
@@ -27,7 +26,7 @@ export default function StudentDashboard() {
         })
         .catch(err => {
           if (err.response && err.response.status === 404) {
-            setRoomInfo(null); // Room not assigned
+            setRoomInfo(null);
           } else {
             setError("Error fetching room info");
           }
@@ -53,7 +52,6 @@ export default function StudentDashboard() {
 
   const submitComplaint = async (e) => {
     e.preventDefault();
-
     const payload = {
       studentRegNo: profile.registrationNumber,
       studentId: profile.studentId,
@@ -81,11 +79,11 @@ export default function StudentDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="min-h-screen bg-gray-50 p-4 md:p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
 
         {/* Room Info */}
-        <div className="col-span-1 bg-white rounded-xl shadow p-6 border border-blue-100">
+        <div className="bg-white rounded-xl shadow p-6 border border-blue-100 w-full">
           <h2 className="text-lg font-semibold text-blue-700 mb-4">Room Information</h2>
           {roomInfo ? (
             <div className="space-y-2 text-gray-600">
@@ -98,24 +96,24 @@ export default function StudentDashboard() {
           )}
         </div>
 
-        {/* Fee Status (Placeholder) */}
-        <div className="col-span-1 bg-white rounded-xl shadow p-6 border border-blue-100">
+        {/* Fee Status */}
+        <div className="bg-white rounded-xl shadow p-6 border border-blue-100 w-full">
           <h2 className="text-lg font-semibold text-blue-700 mb-4">Fee Status</h2>
           <p className="text-gray-600 mb-2">Last Payment: <span className="text-blue-600">₹15,000</span> on March 15, 2024</p>
           <p className="text-gray-600">Next Due: <span className="text-red-500">April 15, 2025</span></p>
         </div>
 
         {/* Announcements */}
-        <div className="mb-6 bg-white rounded-xl shadow p-6 border border-blue-100 w-fit">
+        <div className="bg-white rounded-xl shadow p-6 border border-blue-100 w-full">
           <h2 className="text-lg font-semibold text-blue-700 mb-4">Announcements</h2>
-          <ul className="list-disc list-inside text-gray-600">
+          <ul className="list-disc list-inside text-gray-600 space-y-1">
             <li>Next inspection on April 20</li>
             <li>Water supply maintenance on April 18</li>
           </ul>
         </div>
 
         {/* Complaint Form */}
-        <div className="col-span-1 bg-white rounded-xl shadow p-6 border border-blue-100">
+        <div className="bg-white rounded-xl shadow p-6 border border-blue-100 w-full col-span-1">
           <h2 className="text-lg font-semibold text-blue-700 mb-4">Raise a Complaint</h2>
           <form className="space-y-4" onSubmit={submitComplaint}>
             <textarea
@@ -145,7 +143,7 @@ export default function StudentDashboard() {
         </div>
 
         {/* Complaint List */}
-        <div className="col-span-2 bg-white rounded-xl shadow p-6 border border-blue-100 max-h-[300px] overflow-y-auto">
+        <div className="bg-white rounded-xl shadow p-6 border border-blue-100 w-full col-span-1 sm:col-span-2 max-h-[300px] overflow-y-auto">
           <h2 className="text-lg font-semibold text-blue-700 mb-4">Your Complaints</h2>
           {complaints.length > 0 ? (
             <ul className="divide-y divide-gray-200">
@@ -169,7 +167,6 @@ export default function StudentDashboard() {
             <p className="text-gray-500">No complaints found.</p>
           )}
         </div>
-
       </div>
     </div>
   );
