@@ -30,7 +30,7 @@ const Footer = () => {
 
       {/* Bottom */}
       <div className="mt-8 flex flex-col md:flex-row items-center justify-between text-xs text-[#2489D3]">
-        <div className="mb-2 md:mb-0">© {new Date().getFullYear()} Steath094. All rights reserved.</div>
+        <div className="mb-2 md:mb-0">© {new Date().getFullYear()} Daisy. All rights reserved.</div>
         <div>
           <select className="bg-transparent text-[#2489D3] border-none outline-none">
             <option>English</option>
